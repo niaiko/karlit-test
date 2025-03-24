@@ -11,12 +11,13 @@ sequelize
   .then(() => {
     logger.info("Database connection established")
 
-    // Synchronize models with database (in development only)
-    if (process.env.NODE_ENV === "development") {
-      return sequelize.sync()
-    }
+    // Synchronize models with database
+    // Force: false - This creates the table if it doesn't exist (and does nothing if it already exists)
+    return sequelize.sync({ force: false })
   })
   .then(() => {
+    logger.info("Database synchronized")
+
     // Start the server
     app.listen(PORT, () => {
       logger.info(`Server running on port ${PORT}`)

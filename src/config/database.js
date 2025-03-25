@@ -1,17 +1,17 @@
-const { Sequelize } = require("sequelize")
-const dotenv = require("dotenv")
+const { Sequelize } = require('sequelize');
+const dotenv = require('dotenv');
 
-dotenv.config()
+dotenv.config();
 
 // Création de l'instance Sequelize
 const sequelize = new Sequelize(
-  process.env.DB_NAME || "accounting",
-  process.env.DB_USERNAME || "root",
-  process.env.DB_PASSWORD || "",
+  process.env.DB_NAME || 'accounting',
+  process.env.DB_USERNAME || 'root',
+  process.env.DB_PASSWORD || '',
   {
-    host: process.env.DB_HOST || "localhost",
-    port: Number.parseInt(process.env.DB_PORT || "3306"),
-    dialect: "mysql",
+    host: process.env.DB_HOST || 'localhost',
+    port: Number.parseInt(process.env.DB_PORT || '3306'),
+    dialect: 'mysql',
     logging: console.log, // Activer les logs SQL pour le débogage
     pool: {
       max: 5,
@@ -22,36 +22,36 @@ const sequelize = new Sequelize(
     // Ajouter ces options pour plus de compatibilité
     dialectOptions: {
       // Pour MySQL 8.0+
-      charset: "utf8mb4",
+      charset: 'utf8mb4',
     },
     define: {
-      charset: "utf8mb4",
-      collate: "utf8mb4_unicode_ci",
+      charset: 'utf8mb4',
+      collate: 'utf8mb4_unicode_ci',
     },
   },
-)
+);
 
 // Ajouter cette fonction pour tester la connexion
 const testConnection = async () => {
   try {
-    await sequelize.authenticate()
-    console.log("Connection to the database has been established successfully.")
+    await sequelize.authenticate();
+    console.log('Connection to the database has been established successfully.');
 
     // Afficher les informations de connexion (sans les mots de passe)
-    console.log("Database connection info:", {
-      database: process.env.DB_NAME || "accounting",
-      host: process.env.DB_HOST || "localhost",
-      port: Number.parseInt(process.env.DB_PORT || "3306"),
-      username: process.env.DB_USERNAME || "root",
-    })
+    console.log('Database connection info:', {
+      database: process.env.DB_NAME || 'accounting',
+      host: process.env.DB_HOST || 'localhost',
+      port: Number.parseInt(process.env.DB_PORT || '3306'),
+      username: process.env.DB_USERNAME || 'root',
+    });
 
-    return true
+    return true;
   } catch (error) {
-    console.error("Unable to connect to the database:", error)
-    return false
+    console.error('Unable to connect to the database:', error);
+    return false;
   }
-}
+};
 
 // Exporter la fonction de test
-module.exports = { sequelize, testConnection }
+module.exports = { sequelize, testConnection };
 

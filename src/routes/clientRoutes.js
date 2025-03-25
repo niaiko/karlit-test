@@ -1,8 +1,8 @@
-const { Router } = require("express")
-const { ClientController } = require("../controllers/ClientController")
+const { Router } = require('express');
+const { ClientController } = require('../controllers/ClientController');
 
-const router = Router()
-const clientController = new ClientController()
+const router = Router();
+const clientController = new ClientController();
 
 /**
  * @swagger
@@ -21,7 +21,7 @@ const clientController = new ClientController()
  *       404:
  *         description: Client not found
  */
-router.get("/:id", clientController.getClient)
+router.get('/:id', clientController.getClient);
 
 /**
  * @swagger
@@ -45,7 +45,7 @@ router.get("/:id", clientController.getClient)
  *       400:
  *         description: Invalid input
  */
-router.post("/", clientController.createClient)
+router.post('/', clientController.createClient);
 
 /**
  * @swagger
@@ -75,7 +75,7 @@ router.post("/", clientController.createClient)
  *       404:
  *         description: Client not found
  */
-router.put("/:id", clientController.updateClient)
+router.put('/:id', clientController.updateClient);
 
 /**
  * @swagger
@@ -94,7 +94,7 @@ router.put("/:id", clientController.updateClient)
  *       404:
  *         description: Client not found
  */
-router.delete("/:id", clientController.deleteClient)
+router.delete('/:id', clientController.deleteClient);
 
-module.exports = router
+module.exports = router;
 

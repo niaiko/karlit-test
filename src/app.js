@@ -5,6 +5,7 @@ const morgan = require("morgan")
 const swaggerUi = require("swagger-ui-express")
 const { errorHandler } = require("./middlewares/errorHandler")
 const clientRoutes = require("./routes/clientRoutes")
+const balanceSheetRoutes = require("./routes/balanceSheetRoutes")
 const swaggerDocument = require("./config/swagger")
 const { testConnection } = require("./config/database")
 
@@ -21,6 +22,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 // Routes
 app.use("/api/clients", clientRoutes)
+app.use("/api/balance-sheets", balanceSheetRoutes)
 
 // Health check endpoint
 app.get("/health", (req, res) => {

@@ -31,7 +31,6 @@ const BalanceSheet = sequelize.define(
   {
     tableName: "balance_sheets",
     timestamps: false,
-    // Ajouter ces options pour plus de clarté
     comment: "Table storing balance sheet information by client and year",
   },
 )

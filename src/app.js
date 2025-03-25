@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const swaggerUi = require('swagger-ui-express');
 const { errorHandler } = require('./middlewares/errorHandler');
 const clientRoutes = require('./routes/clientRoutes');
 const balanceSheetRoutes = require('./routes/balanceSheetRoutes');
+const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./config/swagger');
 const { testConnection } = require('./config/database');
 
@@ -39,7 +39,8 @@ app.get('/db-check', async (req, res) => {
   }
 });
 
-// Error handling middleware
+// Error handling middleware - DOIT ÊTRE APRÈS TOUTES LES ROUTES
 app.use(errorHandler);
 
 module.exports = app;
+

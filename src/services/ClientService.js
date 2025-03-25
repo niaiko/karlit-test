@@ -18,6 +18,15 @@ class ClientService {
     };
   }
 
+  async getAllClients() {
+    const clients = await this.clientRepository.findAll();
+    return clients.map((client) => ({
+      id: client.id,
+      firstName: client.firstName,
+      lastName: client.lastName,
+    }));
+  }
+
   async createClient(clientData) {
     const client = await this.clientRepository.create(clientData);
     return {

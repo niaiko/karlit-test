@@ -6,6 +6,17 @@ const clientController = new ClientController();
 
 /**
  * @swagger
+ * /api/clients:
+ *   get:
+ *     summary: Get all clients
+ *     responses:
+ *       200:
+ *         description: List of all clients
+ */
+router.get('/', clientController.getAllClients);
+
+/**
+ * @swagger
  * /api/clients/{id}:
  *   get:
  *     summary: Get a client by ID

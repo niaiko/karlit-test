@@ -16,6 +16,15 @@ class ClientController {
     }
   };
 
+  getAllClients = async (req, res, next) => {
+    try {
+      const clients = await this.clientService.getAllClients();
+      res.status(200).json(clients);
+    } catch (error) {
+      next(error);
+    }
+  };
+
   createClient = async (req, res, next) => {
     try {
       const { error, value } = validateClientCreate(req.body);

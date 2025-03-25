@@ -1,8 +1,8 @@
-const { Router } = require('express');
-const { BalanceSheetController } = require('../controllers/BalanceSheetController');
+const { Router } = require("express")
+const { BalanceSheetController } = require("../controllers/BalanceSheetController")
 
-const router = Router();
-const balanceSheetController = new BalanceSheetController();
+const router = Router()
+const balanceSheetController = new BalanceSheetController()
 
 /**
  * @swagger
@@ -21,7 +21,7 @@ const balanceSheetController = new BalanceSheetController();
  *       404:
  *         description: Client not found
  */
-router.get('/client/:clientId', balanceSheetController.getBalanceSheetsByClientId);
+router.get("/client/:clientId", balanceSheetController.getBalanceSheetsByClientId)
 
 /**
  * @swagger
@@ -49,7 +49,7 @@ router.get('/client/:clientId', balanceSheetController.getBalanceSheetsByClientI
  *       404:
  *         description: Client not found
  */
-router.post('/', balanceSheetController.createBalanceSheet);
+router.post("/", balanceSheetController.createBalanceSheet)
 
 /**
  * @swagger
@@ -82,7 +82,7 @@ router.post('/', balanceSheetController.createBalanceSheet);
  *       404:
  *         description: Balance sheet not found
  */
-router.put('/client/:clientId/year/:year', balanceSheetController.updateBalanceSheet);
+router.put("/client/:clientId/year/:year", balanceSheetController.updateBalanceSheet)
 
 /**
  * @swagger
@@ -106,7 +106,7 @@ router.put('/client/:clientId/year/:year', balanceSheetController.updateBalanceS
  *       404:
  *         description: Balance sheet not found
  */
-router.delete('/client/:clientId/year/:year', balanceSheetController.deleteBalanceSheet);
+router.delete("/client/:clientId/year/:year", balanceSheetController.deleteBalanceSheet)
 
-module.exports = router;
+module.exports = router
 

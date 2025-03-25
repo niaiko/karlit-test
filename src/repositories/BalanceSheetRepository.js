@@ -1,4 +1,4 @@
-const { BalanceSheet } = require('../models');
+const BalanceSheet = require('../models/BalanceSheet');
 const { Op } = require('sequelize');
 
 class BalanceSheetRepository {

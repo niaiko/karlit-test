@@ -1,4 +1,4 @@
-const { Client } = require('../models');
+const Client = require('../models/Client');
 const { sequelize } = require('../config/database');
 
 class ClientRepository {
@@ -41,7 +41,7 @@ class ClientRepository {
     });
 
     // Transformer les résultats en tableau d'IDs
-    return duplicates.map((dup) => dup.getDataValue('ids').split(',').map(Number));
+    return duplicates.map((dup) => (dup.getDataValue ? dup.getDataValue('ids').split(',').map(Number) : []));
   }
 }
 

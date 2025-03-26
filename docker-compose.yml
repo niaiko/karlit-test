@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # Service pour l'API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: accounting-api
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - PORT=${PORT:-3000}
+      - DB_HOST=db
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_USERNAME=${DB_USERNAME:-root}
+      - DB_PASSWORD=${DB_PASSWORD:-password}
+      - DB_NAME=${DB_NAME:-accounting}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+    volumes:
+      - ./logs:/usr/src/app/logs
+    depends_on:
+      - db
+    networks:
+      - accounting-network
+
+  # Service pour la base de données MySQL
+  db:
+    image: mysql:8.0
+    container_name: accounting-db
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-password}
+      - MYSQL_DATABASE=${DB_NAME:-accounting}
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - accounting-network
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+networks:
+  accounting-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local
+

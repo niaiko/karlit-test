@@ -64,14 +64,6 @@ The project follows a **Model-View-Controller (MVC)** architecture:
 
 4. Start the server:
     ```bash
-    npm start
+    npm run start
     ```
 5. Access the API documentation at `http://localhost:3000/api-docs`.
-
-## Contributing
-
-Contributions are welcome! Please follow the [contribution guidelines](CONTRIBUTING.md).
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).

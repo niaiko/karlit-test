@@ -19,7 +19,6 @@ const sequelize = new Sequelize(
       acquire: 30000,
       idle: 10000,
     },
-    // Ajouter ces options pour plus de compatibilité
     dialectOptions: {
       // Pour MySQL 8.0+
       charset: 'utf8mb4',
@@ -31,7 +30,6 @@ const sequelize = new Sequelize(
   },
 );
 
-// Ajouter cette fonction pour tester la connexion
 const testConnection = async () => {
   try {
     await sequelize.authenticate();

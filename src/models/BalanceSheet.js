@@ -18,7 +18,6 @@ const BalanceSheet = sequelize.define(
     year: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      field: 'years',
       comment: 'Year of the balance sheet',
     },
     result: {

@@ -39,12 +39,12 @@ app.use('/api/clients', clientRoutes);
 app.use('/api/balance-sheets', balanceSheetRoutes);
 
 // Health check endpoint
-app.get('/health', (req, res) => {
+app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
 // Database connection check endpoint
-app.get('/db-check', async (req, res) => {
+app.get('/api/db-check', async (req, res) => {
   const isConnected = await testConnection();
   if (isConnected) {
     res.status(200).json({ status: 'connected', message: 'Database connection successful' });
